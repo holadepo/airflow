@@ -53,6 +53,7 @@ def send_email(
     files: Optional[AddressesType] = None,
     cc: Optional[AddressesType] = None,
     bcc: Optional[AddressesType] = None,
+    reply_to: str = None,
     sandbox_mode: bool = False,
     conn_id: str = "sendgrid_default",
     **kwargs,
@@ -89,6 +90,10 @@ def send_email(
         bcc = get_email_address_list(bcc)
         for bcc_address in bcc:
             personalization.add_bcc(Email(bcc_address))
+            
+    # Add reply_to address if present
+    if reply_to:
+        mail.reply_to = reply_to
 
     # Add custom_args to personalization if present
     pers_custom_args = kwargs.get('personalization_custom_args')
