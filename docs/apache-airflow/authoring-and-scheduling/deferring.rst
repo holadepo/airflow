@@ -52,7 +52,7 @@ Note that you can't use the deferral ability from inside custom PythonOperator o
 Writing Deferrable Operators
 ----------------------------
 
-When writing a deferrable operators these are the main points to consider:
+When writing a deferrable operator these are the main points to consider:
 
 * Your operator must defer itself with a trigger. You can use a trigger included in core Airflow, or you can write a custom one.
 * Your operator will be stopped and removed from its worker while deferred, and no state persists automatically. You can persist state by instructing Airflow to resume the operator at a certain method or by passing certain kwargs.
